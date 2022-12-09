@@ -20,7 +20,7 @@ const client = new Client({
 client.login(TOKEN);
 
 client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
+	console.log(`Ready! Logged in as ${c.user.tag}, a private bot created by Tony Wu`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -31,12 +31,11 @@ client.on(Events.InteractionCreate, async interaction => {
   const { commandName, options } = interaction
   
   if (commandName === "genimage") {
-
     await interaction.deferReply({
       ephemeral: false,
     })
     let response = await searchImage(interaction.options.get('genimage')["value"])
-
+    interaction.followUp('Generating Image with prompt: ' + interaction.options.get('genimage')["value"]);
     await new Promise(resolve => setTimeout(resolve, 2000))
       interaction.editReply({
         content: response,
@@ -73,28 +72,3 @@ async function main() {
 }
 
 main()
-  
-
-
-// if (interaction.isChatInputCommand() === true) {
-//   if (interaction.options.get('genimage') === null) {
-//     interaction.reply({ content: "Please enter a prompt" })
-//   } else {
-//     // console.log(interaction.options.get('genimage')["value"])
-//     let response = await searchImage(interaction.options.get('genimage')["value"])
-//     await interaction.deferReply({
-//       ephemeral: true
-//     })
-//     await new Promise(resolve => setTimeout(resolve, 5000))
-
-//     interaction.editReply({
-//       content: response,
-//     })
-//     // let response = await searchImage(interaction.options.get('genimage')["value"])
-//     // console.log(response)
-//     // interaction.reply({ content: response })
-//   }
-// }
-// if (interaction.isChatInputCommand() != true) {
-//   return
-// }
