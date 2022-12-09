@@ -11,13 +11,16 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 async function searchImage(prompt) {  
-  const response = await openai.createImage({
-    prompt: prompt,
-    n: 2,
-    size: "1024x1024",
-  })
-  
-  console.log(response.data)
+  try {
+    const response = await openai.createImage({
+      prompt: prompt,
+      n: 2,
+      size: "1024x1024",
+    })
+    return response.data.data[0]["url"]
+  } catch (err) {
+    return err.response.data.error.message
+  }
 }
-
+export {searchImage}
 
