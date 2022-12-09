@@ -1,0 +1,28 @@
+{
+  "name": "ai-chatbot",
+  "version": "1.0.0",
+  "description": "A javascript project that uses the OpenAI open source API to create a interact-able AI chat bot that can answer cool stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonywuhoo/AI-ChatBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonywuhoo/AI-ChatBot/issues"
+  },
+  "homepage": "https://github.com/tonywuhoo/AI-ChatBot#readme",
+  "dependencies": {
+    "discord": "^0.8.2",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "openai": "^3.1.0",
+    "readline": "^1.3.0"
+  },
+  "type": "module"
+}
